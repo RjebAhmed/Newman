@@ -1,23 +1,6 @@
 pipeline {
   agent any
   stages {
-    stage('node version verification') {
-      steps {
-        sh 'node -v'
-      }
-    }
-  ,
-    stage('Newman test') {
-      steps {
-        sh 'newman run https://www.getpostman.com/collections/c72789cd26a07de115bd -r htmlextra — reporter-htmlextra-export'
-      }
-    }
-  
-  }
-}
-pipeline {
-  agent any
-  stages {
     stage('verify newman') {
       steps {
         stage('node version verification') {
