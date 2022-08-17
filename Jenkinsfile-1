@@ -15,3 +15,18 @@ pipeline {
   
   }
 }
+pipeline {
+  agent any
+  stages {
+    stage('verify newman') {
+      steps {
+        stage('node version verification') {
+        }
+    }
+    stage('run newman test') {
+      steps {
+        sh 'newman run https://www.getpostman.com/collections/c72789cd26a07de115bd -r htmlextra — reporter-htmlextra-export'
+      }
+    }
+  }
+}
