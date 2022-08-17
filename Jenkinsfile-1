@@ -7,10 +7,17 @@ pipeline {
         sh 'k6 version'
       }
     }
-    stage('run k6 test') {
+    stage('install newman') {
+      steps {
+        sh 'npm install -g newman'
+      }
+    }
+    stage('run newman test') {
       steps {
         sh 'newman run https://www.getpostman.com/collections/c72789cd26a07de115bd -r htmlextra — reporter-htmlextra-export'
       }
     }
+
   }
 }
+
