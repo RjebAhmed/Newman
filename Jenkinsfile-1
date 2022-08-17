@@ -1,9 +1,16 @@
 pipeline {
   agent any
   stages {
-    stage('verify k6') {
+    stage('node version verification') {
       steps {
         sh 'node -v'
+      }
+    }
+  }
+  stages {
+    stage('Newman test') {
+      steps {
+        sh 'newman run https://www.getpostman.com/collections/c72789cd26a07de115bd -r htmlextra — reporter-htmlextra-export'
       }
     }
   }
